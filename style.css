@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+    margin: 10px;
+}
+
+.result {
+    position: relative;   
+    min-height: calc(100dvh - 60px);    
+}
+
+.border-container{
+  border: 2px solid black;
+   margin: 10px;
+}
