@@ -111,13 +111,23 @@ document.addEventListener("mouseup", function (e) {
     }
   } else if (isSelecting) {
     const rubberRect = rubber.getBoundingClientRect();
-    for (const letter of result.children) {
-      if (letter !== rubber) {
-        const letterRect = letter.getBoundingClientRect();
-        const isOverLap = rectsOverlap(rubberRect, letterRect);
-        if (isOverLap) {
-          selectedLetters.add(letter);
-          letter.style.backgroundColor = "#ff0000";
+
+    if (rubberRect.width < 5 && rubberRect.height < 5) {
+      // перевірка це звичайний клік чи тягнемо трикутник
+      for (const letter of selectedLetters) {
+        letter.style.backgroundColor = "";
+      }
+      selectedLetters.clear();
+    } // логіка виділення
+    else {
+      for (const letter of result.children) {
+        if (letter !== rubber) {
+          const letterRect = letter.getBoundingClientRect();
+          const isOverLap = rectsOverlap(rubberRect, letterRect);
+          if (isOverLap) {
+            selectedLetters.add(letter);
+            letter.style.backgroundColor = "#ff0000";
+          }
         }
       }
     }
